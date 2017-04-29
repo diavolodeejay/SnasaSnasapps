@@ -72,7 +72,7 @@ function Path()
     var pos = [0,8,36,59,80,100];
    for(var a = 0; a < 6; a++)
    {
-        newMark(pos[a],a);
+        newMark(pos[a],a,"zoom");
    }
     FunzionePunto(0);
     $(window).keypress(function(e){if(e.which == 32){
