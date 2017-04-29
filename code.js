@@ -5,6 +5,7 @@ var GoogleDecodeP = new XMLHttpRequest();
 var GoogleDecodeA = new XMLHttpRequest();
 var ReqPOI = new XMLHttpRequest();
 var currentPOI = 0;
+var count = 0;
 /*
     1.In base al nome trova le coordinate (per la demo)
     2.Dalle coordinate trova le città vicine
@@ -17,7 +18,6 @@ var currentPOI = 0;
 */
 function Start()
 {
-    $("top")
     var cityP = "Naples";
     cityP = cityP.toLowerCase();
     var cityA = "Venice";
@@ -74,7 +74,11 @@ function Path()
    {
         newMark(pos[a],a);
    }
-   
+    FunzionePunto(0);
+    $(window).keypress(function(e){if(e.which == 32){
+        count++;
+        FunzionePunto(count);
+    }});
 }
 
 function FunzionePunto(p)
