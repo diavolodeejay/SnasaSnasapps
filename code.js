@@ -45,7 +45,6 @@ function GoogleDecodedP(e)
         var risP = JSON.parse(GoogleDecodeP.responseText);
         latP = risP.results[0].geometry.location.lat;
         lngP = risP.results[0].geometry.location.lng;
-        console.log(latP + " " + lngP);
     }
 }
 
@@ -56,7 +55,6 @@ function GoogleDecodedA(e)
         var risA = JSON.parse(GoogleDecodeA.responseText);
         latA = risA.results[0].geometry.location.lat;
         lngA = risA.results[0].geometry.location.lng;
-        console.log(latA + " " + lngA);
     }
 
 }
@@ -75,7 +73,6 @@ function Path()
    for(var a = 0; a < 6; a++)
    {
         newMark(pos[a],a);
-        console.log(pos[a]);
    }
    
 }
