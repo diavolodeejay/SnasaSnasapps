@@ -84,37 +84,37 @@ function FunzionePunto(p)
         case 0:
             currentPOI = 0;
             $("#topbox").append('<div id="explain">Text about naples</div>');
-            $("#topbox").append('<img id="imm" src="naples.png"/>');
+            $("#topbox").append('<img id="imm" src="naples.jpg"/>');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=40.8465299&lng=14.2497018&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 1:
             currentPOI = 1;
             $("#topbox").append('<div id="explain">Text about Vesuvio</div>');
-            $("#topbox").append('<img id="imm" src="vesuvio.png"/>');
+            $("#topbox").append('<img id="imm" src="vesuvio.jpg"/>');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=40.7691355&lng=14.4134286&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 2:
             currentPOI = 2;
             $("#topbox").append('<div id="explain">Text about Rome</div>');
-            $("#topbox").append('<img id="imm" src="rome.png"/>');
+            $("#topbox").append('<img id="imm" src="rome.jpg"/>');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=41.909986&lng=12.3959129&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 3:
             currentPOI = 3;
             $("#topbox").append('<div id="explain">Text about Florence</div>');
-            $("#topbox").append('<img id="imm" src="florence.png"/>');
+            $("#topbox").append('<img id="imm" src="florence.jpg"/>');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=43.7799368&lng=11.1709278&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 4:
             currentPOI = 4;
             $("#topbox").append('<div id="explain">Text about Po</div>');
-            $("#topbox").append('<img id="imm" src="po.png"/>');
+            $("#topbox").append('<img id="imm" src="po.jpg"/>');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=44.9376816&lng=11.7370996&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 5:
             currentPOI = 5;
             $("#topbox").append('<div id="explain">Text about Venice</div>');
-            $("#topbox").append('<img id="imm" src="venice.png"/>');
+            $("#topbox").append('<img id="imm" src="venice.jpg"/>');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=45.4053211&lng=12.1015564&username=gabrieleancora&maxRows=20&lang=en");
             break;
         default:
