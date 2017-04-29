@@ -1,0 +1,15 @@
+body { 
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size:25px;
+	background-color:#DDDFE0;
+	color:#808080;
+    transition: 1s;
+
+}
+
+#content {
+    font-size:45px;
+    color:black;
+    padding: 20px 30px 20px 30px;
+    width: 100%;
+}
