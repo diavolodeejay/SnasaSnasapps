@@ -70,9 +70,10 @@ function Path()
         Venezia a 100
     */
     var pos = [0,8,36,59,80,100];
-   for(var a = 0; a < 6; a++)
+    newMark(pos[0],0,"zoom");
+   for(var a = 1; a < 6; a++)
    {
-        newMark(pos[a],a,"zoom");
+        newMark(pos[a],a,"");
    }
     FunzionePunto(0);
     $(window).keypress(function(e){if(e.which == 32){
