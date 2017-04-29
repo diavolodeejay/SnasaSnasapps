@@ -1,0 +1,18 @@
+TIME
+When you tap it, it shows 
+-Current time
+-Arrival time (how much manca)
+-Arrival time (orario effettivo locale)
+
+Title
+-Sta li e al posto di Rome c'è la città dove sei. Se non sei da nessuna parte c'è scritto "Random curiosity"
+
+Description
+-Breve descrizione della città, se non sei da nessuna parte c'è roba su geografia/fauna/flora
+
+Links
+-In città
+--Links a principali attrazioni
+-Fuori città
+--Link su flora/fauna SIMILI (wikipedia li ha lel)
+
