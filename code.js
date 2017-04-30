@@ -74,9 +74,10 @@ function Path()
     newMark(pos[0],0,nameza[0],"zoom");
    for(var a = 1; a < 6; a++)
    {
-        newMark(pos[a],nameza[a],a);
+        newMark(pos[a],a,nameza[a]);
    }
 	FunzionePunto(0);
+	$("#title").html(mark_titles[0]);
 }
 
 function FunzionePunto(p)
@@ -116,7 +117,7 @@ function FunzionePunto(p)
         case 5:
             currentPOI = 5;
             $("#topbox").append('<img id="imm" src="resources/venice.jpg"/>');
-            $("#topbox").append('<div id="explain">Venice is the capital city of the Veneto region in Italy. It is famous for a lot of things, but mainly the fact that there are no roads, but the whole city is constructed in the sea.");
+            $("#topbox").append('<div id="explain">Venice is the capital city of the Veneto region in Italy. It is famous for a lot of things, but mainly the fact that there are no roads, but the whole city is constructed in the sea.');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=45.4053211&lng=12.1015564&username=gabrieleancora&maxRows=20&lang=en");
             break;
         default:
@@ -137,7 +138,7 @@ function Filter(e)
 {
     if(ReqPOI.readyState == 4 && ReqPOI.status == 200)
     {
-        var out = 'Points of interest near here: <br/><ul>';
+        var out = '<div id="explain">Points of interest near here: <br/><ul>';
         var ris = JSON.parse(ReqPOI.responseText);
         var c = 0;
         var k = 20;
