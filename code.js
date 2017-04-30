@@ -73,21 +73,18 @@ function Path()
     newMark(pos[0],0,"zoom");
    for(var a = 1; a < 6; a++)
    {
-        newMark(pos[a],a,"");
+        newMark(pos[a],a);
    }
     FunzionePunto(0);
-    $(window).keypress(function(e){if(e.which == 32){
-        count++;
-        FunzionePunto(count);
-    }});
 }
 
 function FunzionePunto(p)
 {
-    
-    document.getElementById("#topbox").innerHTML = "";
+
+    document.getElementById("topbox").innerHTML = "";
     switch(p){
         case 0:
+            console.log("Carica 0");
             currentPOI = 0;
             $("#topbox").append('<div id="explain">Text about naples</div>');
             $("#topbox").append('<img id="imm" src="naples.jpg"/>');
