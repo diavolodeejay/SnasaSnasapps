@@ -1,18 +1,109 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <script type="text/javascript" src="JS/code.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,300' rel='stylesheet' type='text/css'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="code.js"></script>
+	<script type="text/javascript">
+		var marks = [], waiting = false, slide_mode = true;
+		window.onload = function init()
+		{
+			var slides = ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"];
+			var slides_spacing = 100/(slides.length-1);
+			
+			newMark(0, 0, "zoom");
+			for (i = 1; i < slides.length; i++)
+			{
+				newMark(slides_spacing*i, i);
+			}
+			
+			$("#bottom_img").attr("src", "resources/" + slides[0]);
+			
+			var press_count = 1, bottom_img = false;
+			$(window).keypress(function(e) {
+				if (waiting) return;
+				if (e.keyCode == 0 || e.keyCode == 32) {
+					var pixel_vw_proportion = 100 / document.documentElement.clientWidth;
+					var pos = (parseInt($("#"+press_count).css("margin-left")) ) * pixel_vw_proportion;
+					$("#pointer").css({"margin-left" : pos + "vw"});
+					$(".zoom").toggleClass("zoom", false);
+					$("#"+press_count).toggleClass("zoom", true);
+
+					if (press_count >= marks.length-1) 
+					{
+						waiting = true;
+						if(!slide_mode) 
+						{
+							$(window).unbind("keypress"); 
+							return; 
+						}
+						slide_mode = false;
+						$("#bottom_img").remove();
+						$("#top_img").remove();
+						$("#"+press_count).delay(800).queue(
+							function(){$(this).toggleClass("zoom", false)}
+						);
+						
+						setTimeout(demo, 1500);
+						press_count = 0;
+					}
+					if(!slide_mode)
+					{
+						console.log("chiamata");
+						FunzionePunto(press_count);
+						console.log(marks.length + " " + press_count + " " + slide_mode);
+
+						press_count++;
+						return;
+					}
+					press_count++;
+					
+					if(bottom_img) 
+					{
+						$("#bottom_img").attr("src", "resources/" + slides[press_count]);
+						$("#top_img").toggleClass("vanish", true);
+					} else 
+					{
+						$("#top_img").toggleClass("vanish", false).attr("src", "resources/" + slides[press_count]);
+					}
+					bottom_img = !bottom_img;
+				}
+			});
+		}
+		function newMark(percent, id, classes) 
+		{
+			var pixel_vw_proportion = 100 / document.documentElement.clientWidth;
+			var left = ((($("#timeline").width() - $("#pointer").width())/100*percent  + $("#pointer").width()/2) * pixel_vw_proportion) - 1.25;
+			var mark = $("<div class='mark " + classes + "' id='" + id + "' style='margin-left: "+ left +"vw;'></div>");
+			marks[marks.length] = mark;
+			$("#timeline").append(mark);
+		}
+		function demo()
+		{
+			$.each(marks, function( index, value ){
+				value.css({"width" : 0, "height" : 0});
+				value.remove();
+			});
+			$("#pointer").css({"margin-left" : 0});
+			
+			Start(); // CALLS DEMO
+			waiting = false;
+		}
+	</script>
 </head>
 <body>
     <div id="content">
-        <div id="title">
-                <input type="text" id="cityP" /><br/><input type="text" id="cityA" /><button id="send" onclick="Coordinates()">Cerca</button>
-                <br/>
-                <button id="wa" onclick="FunzionePunto(0)">Debug Button</button>
+		<div id="topbox">
+			<img id="bottom_img" class="slide" />
+			<img id="top_img" class="slide vanish"/>
+		</div>
+        <div id="botbox">
+			<div id="timeline">
+				<div id="pointer"></div>
+			</div>
         </div>
-        <div id="text1">
+		<div id="topbox" class="box>
 
         </div>
     </div>

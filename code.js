@@ -75,49 +75,48 @@ function Path()
    {
         newMark(pos[a],a);
    }
-    FunzionePunto(0);
+	FunzionePunto(0);
 }
 
 function FunzionePunto(p)
 {
-
     document.getElementById("topbox").innerHTML = "";
+	console.log(p);
     switch(p){
         case 0:
-            console.log("Carica 0");
             currentPOI = 0;
             $("#topbox").append('<div id="explain">Text about naples</div>');
-            $("#topbox").append('<img id="imm" src="naples.jpg"/>');
+            $("#topbox").append('<img id="imm" src="resources/naples.jpg"/>');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=40.8465299&lng=14.2497018&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 1:
             currentPOI = 1;
             $("#topbox").append('<div id="explain">Text about Vesuvio</div>');
-            $("#topbox").append('<img id="imm" src="vesuvio.jpg"/>');
+            $("#topbox").append('<img id="imm" src="resources/vesuvio.jpg"/>');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=40.7691355&lng=14.4134286&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 2:
             currentPOI = 2;
             $("#topbox").append('<div id="explain">Text about Rome</div>');
-            $("#topbox").append('<img id="imm" src="rome.jpg"/>');
+            $("#topbox").append('<img id="imm" src="resources/rome.jpg"/>');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=41.909986&lng=12.3959129&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 3:
             currentPOI = 3;
             $("#topbox").append('<div id="explain">Text about Florence</div>');
-            $("#topbox").append('<img id="imm" src="florence.jpg"/>');
+            $("#topbox").append('<img id="imm" src="resources/florence.jpg"/>');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=43.7799368&lng=11.1709278&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 4:
             currentPOI = 4;
             $("#topbox").append('<div id="explain">Text about Po</div>');
-            $("#topbox").append('<img id="imm" src="po.jpg"/>');
+            $("#topbox").append('<img id="imm" src="resources/po.jpg"/>');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=44.9376816&lng=11.7370996&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 5:
             currentPOI = 5;
             $("#topbox").append('<div id="explain">Text about Venice</div>');
-            $("#topbox").append('<img id="imm" src="venice.jpg"/>');
+            $("#topbox").append('<img id="imm" src="resources/venice.jpg"/>');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=45.4053211&lng=12.1015564&username=gabrieleancora&maxRows=20&lang=en");
             break;
         default:
@@ -148,8 +147,14 @@ function Filter(e)
                 if(ris.geonames[a].feature == "landmark")
                 {
                     var ts = ris.geonames[a].title;
-                    ts = ts.substring(0,ts.indexOf(','));
-                    out = out + "<li>"+ts+"</li>";
+					console.log(ts);
+					if(ts.indexOf("(")>0)
+					{
+						ts = ts.substring(0,ts.indexOf("("));
+					}
+                    
+					
+                    out += "<li>"+ts+"</li>";
                     //aggiungi al documento html la lista di poi presa da ts
                     c++;
                     if(c > 3)
