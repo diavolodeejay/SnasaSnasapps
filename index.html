@@ -32,8 +32,6 @@
 					$("#"+press_count).toggleClass("zoom", true);
 					$("#title").html(mark_titles[press_count]);
 
-											console.log(mark_titles[press_count]);
-
 					if (press_count >= marks.length-1) 
 					{
 						waiting = true;
@@ -91,8 +89,6 @@
 		}
 		function newMark(percent, id, title, classes)
 		{
-								console.log(title);
-
 			var pixel_vw_proportion = 100 / document.documentElement.clientWidth;
 			var left = ((($("#timeline").width() - $("#pointer").width())/100*percent  + $("#pointer").width()/2) * pixel_vw_proportion) - 1.25;
 			var mark = $("<div class='mark " + classes + "' id='" + id + "' style='margin-left: "+ left +"vw;'></div>");
