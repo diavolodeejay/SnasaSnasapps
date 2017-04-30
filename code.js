@@ -86,37 +86,37 @@ function FunzionePunto(p)
         case 0:
             currentPOI = 0;
             $("#topbox").append('<img id="imm" src="resources/naples.jpg"/>');
-            $("#topbox").append('<div id="explain">The name "Napoli" comes from latin, meaning "new city". It is the third largest city in Italy, and is the capital of the Campania region. It is famous for: Pizza and The Vesuvius Vulcano.</div>');
+            $("#topbox").append('<div id="explain">The name "Napoli" comes from latin, meaning "new city". It is the third largest city in Italy, and is the capital of the Campania region. It is famous for: Pizza and The Vesuvius Vulcano.');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=40.8465299&lng=14.2497018&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 1:
             currentPOI = 1;
             $("#topbox").append('<img id="imm" src="resources/vesuvio.jpg"/>');
-            $("#topbox").append('<div id="explain">Mount vesuvius is a volcano that overshadows naples. It erupted in 79Ad, creating the popular Pompeii ruins. Standing at 33km tall, it has slept since march of 1944.</div>'); 
+            $("#topbox").append('<div id="explain">Mount vesuvius is a volcano that overshadows naples. It erupted in 79Ad, creating the popular Pompeii ruins. Standing at 33km tall, it has slept since march of 1944.'); 
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=40.7691355&lng=14.4134286&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 2:
             currentPOI = 2;
             $("#topbox").append('<img id="imm" src="resources/rome.jpg"/>');
-            $("#topbox").append('<div id="explain">Rome is the capital city of Italy. It is the fourth most populated city in Europe. It attracts milions of tourists every year thanks to it rich history, among which the infamous coosseum.</div>');
+            $("#topbox").append('<div id="explain">Rome is the capital city of Italy. It is the fourth most populated city in Europe. It attracts milions of tourists every year thanks to it rich history, among which the infamous coosseum.');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=41.909986&lng=12.3959129&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 3:
             currentPOI = 3;
             $("#topbox").append('<img id="imm" src="resources/florence.jpg"/>');
-            $("#topbox").append('<div id="explain">Florence is the capital city of the Tuscany region in Italy. It is widely regarded as the birthplace of the Renaissance, and is ripe in culture, art and architecture.</div>');
+            $("#topbox").append('<div id="explain">Florence is the capital city of the Tuscany region in Italy. It is widely regarded as the birthplace of the Renaissance, and is ripe in culture, art and architecture.');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=43.7799368&lng=11.1709278&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 4:
             currentPOI = 4;
             $("#topbox").append('<img id="imm" src="resources/po.jpg"/>');
-            $("#topbox").append('<div id="explain">The Po is the biggest river in Italy. It crosses Italy, Switzerland and France. This river is prone to fog due to the heavy industrialization in the area.</div>');
+            $("#topbox").append('<div id="explain">The Po is the biggest river in Italy. It crosses Italy, Switzerland and France. This river is prone to fog due to the heavy industrialization in the area.');
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=44.9376816&lng=11.7370996&username=gabrieleancora&maxRows=20&lang=en");
             break;
         case 5:
             currentPOI = 5;
             $("#topbox").append('<img id="imm" src="resources/venice.jpg"/>');
-            $("#topbox").append('<div id="explain">Venice is the capital city of the Veneto region in Italy. It is famous for a lot of things, but mainly the fact that there are no roads, but the whole city is constructed in the sea.</div>');
+            $("#topbox").append('<div id="explain">Venice is the capital city of the Veneto region in Italy. It is famous for a lot of things, but mainly the fact that there are no roads, but the whole city is constructed in the sea.");
             Interest("http://api.geonames.org/findNearbyWikipediaJSON?lat=45.4053211&lng=12.1015564&username=gabrieleancora&maxRows=20&lang=en");
             break;
         default:
@@ -137,7 +137,7 @@ function Filter(e)
 {
     if(ReqPOI.readyState == 4 && ReqPOI.status == 200)
     {
-        var out = '<div id="POI">Points of interest near here: <br/><ul>';
+        var out = 'Points of interest near here: <br/><ul>';
         var ris = JSON.parse(ReqPOI.responseText);
         var c = 0;
         var k = 20;
