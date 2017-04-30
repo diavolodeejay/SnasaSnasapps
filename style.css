@@ -9,22 +9,24 @@ html, body {
 }
 #topbox {
 	position: absolute;
+	border: 0;
     top: 0;
     left: 0;
     padding: 0px;
     width: 100%;
-	height: 80%;
+	height: 87%;
 	background-size: 100% 100%;
 	background-color:#000000;
 }
 #botbox {
 	position: absolute;
+	border: 0;
     bottom: 0;
     left: 0;
     background-color:#262020;
     padding: 0px;
     width: 100%;
-	height: 20%;
+	height: 13%;
 }
 #timeline {
 	z-index: 0;
@@ -68,10 +70,6 @@ html, body {
 
 
 /* Classes */
-.mark.hightlight {
-	width: 2.5vw;
-	height: 5vw;
-}
 .slide {
 	position: absolute;
 	width: 100%;
@@ -86,15 +84,12 @@ html, body {
 
 }
 .mark.zoom {
-    transform: scale(2);
-    -ms-transform: scale(2);
-    -moz-transform: scale(2);
-    -webkit-transform: scale(2);
-    transform-origin: 50% 0;
-    -ms-transform-origin: 50% 0;
-    -moz-transform-origin: 50% 0;
-    -webkit-transform-origin: 50% 0;
+	width: 5vw;
+	height: 10vw;
 	margin-top: -7vw;
+	-ms-transform: translate(-2.5vw, 0);
+    -webkit-transform: translate(-2.5vw, 0);
+    transform: translate(-2.5vw, 0);
 }
 .mark { 
 	z-index: 1;

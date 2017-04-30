@@ -9,7 +9,7 @@
 		var marks = [], waiting = false, slide_mode = true;
 		window.onload = function init()
 		{
-			var slides = ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg"];
+			var slides = ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image4.jpg"];
 			var slides_spacing = 100/(slides.length-1);
 			
 			newMark(0, 0, "zoom");
@@ -25,7 +25,7 @@
 				if (waiting) return;
 				if (e.keyCode == 0 || e.keyCode == 32) {
 					var pixel_vw_proportion = 100 / document.documentElement.clientWidth;
-					var pos = (parseInt($("#"+press_count).css("margin-left")) ) * pixel_vw_proportion;
+					var pos = (parseInt($("#"+press_count).css("margin-left")) - $("#"+press_count).width()/2) * pixel_vw_proportion - 1.25;
 					$("#pointer").css({"margin-left" : pos + "vw"});
 					$(".zoom").toggleClass("zoom", false);
 					$("#"+press_count).toggleClass("zoom", true);
@@ -39,22 +39,38 @@
 							return; 
 						}
 						slide_mode = false;
-						$("#bottom_img").remove();
-						$("#top_img").remove();
-						$("#"+press_count).delay(800).queue(
-							function(){$(this).toggleClass("zoom", false)}
-						);
+						if (!bottom_img)
+						{
+							$("#top_img").remove();
+							$("#bottom_img").fadeOut( "slow", function() {
+								$(this).remove();
+							});
+						} else 
+						{
+							$("#bottom_img").remove();
+							$("#top_img").fadeOut( "slow", function() {
+								$(this).remove();
+							});
+						}
 						
+						$("#"+press_count).delay(800).queue(
+							function(){
+								$(this).toggleClass("zoom", false);
+								$("#pointer").css({"margin-left" : 0});
+							}
+						);
 						setTimeout(demo, 1500);
-						press_count = 0;
+
+						press_count = 1;
+						return;
 					}
 					if(!slide_mode)
 					{
 						FunzionePunto(press_count);
+
 						press_count++;
 						return;
 					}
-					press_count++;
 					
 					if(bottom_img) 
 					{
@@ -64,6 +80,8 @@
 					{
 						$("#top_img").toggleClass("vanish", false).attr("src", "resources/" + slides[press_count]);
 					}
+					press_count++;
+
 					bottom_img = !bottom_img;
 				}
 			});
@@ -82,10 +100,9 @@
 				value.css({"width" : 0, "height" : 0});
 				value.remove();
 			});
-			$("#pointer").css({"margin-left" : 0});
 			
 			Start(); // CALLS DEMO
-			waiting = false;
+			waiting = false; 
 		}
 	</script>
 </head>
