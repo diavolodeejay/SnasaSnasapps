@@ -6,19 +6,20 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="code.js"></script>
 	<script type="text/javascript">
-		var marks = [], waiting = false, slide_mode = true;
+		var marks = [], mark_titles = [], waiting = false, slide_mode = true, apptitle = "AwAIRness";
 		window.onload = function init()
 		{
 			var slides = ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image4.jpg"];
 			var slides_spacing = 100/(slides.length-1);
 			
-			newMark(0, 0, "zoom");
+			newMark(0, 0, apptitle, "zoom");
 			for (i = 1; i < slides.length; i++)
 			{
-				newMark(slides_spacing*i, i);
+				newMark(slides_spacing*i, i, apptitle);
 			}
 			
 			$("#bottom_img").attr("src", "resources/" + slides[0]);
+			$("#title").html(mark_titles[0]);
 			
 			var press_count = 1, bottom_img = false;
 			$(window).keypress(function(e) {
@@ -29,6 +30,9 @@
 					$("#pointer").css({"margin-left" : pos + "vw"});
 					$(".zoom").toggleClass("zoom", false);
 					$("#"+press_count).toggleClass("zoom", true);
+					$("#title").html(mark_titles[press_count]);
+
+											console.log(mark_titles[press_count]);
 
 					if (press_count >= marks.length-1) 
 					{
@@ -67,7 +71,6 @@
 					if(!slide_mode)
 					{
 						FunzionePunto(press_count);
-
 						press_count++;
 						return;
 					}
@@ -86,12 +89,15 @@
 				}
 			});
 		}
-		function newMark(percent, id, classes) 
+		function newMark(percent, id, title, classes)
 		{
+								console.log(title);
+
 			var pixel_vw_proportion = 100 / document.documentElement.clientWidth;
 			var left = ((($("#timeline").width() - $("#pointer").width())/100*percent  + $("#pointer").width()/2) * pixel_vw_proportion) - 1.25;
 			var mark = $("<div class='mark " + classes + "' id='" + id + "' style='margin-left: "+ left +"vw;'></div>");
 			marks[marks.length] = mark;
+			mark_titles[mark_titles.length] = title;
 			$("#timeline").append(mark);
 		}
 		function demo()
@@ -100,10 +106,12 @@
 				value.css({"width" : 0, "height" : 0});
 				value.remove();
 			});
+			mark_titles = [];
 			
 			Start(); // CALLS DEMO
 			waiting = false; 
 		}
+		
 	</script>
 </head>
 <body>
@@ -116,6 +124,7 @@
 			<div id="timeline">
 				<div id="pointer"></div>
 			</div>
+			<div id="title"></div>
         </div>
 		<div id="topbox" class="box>
 
